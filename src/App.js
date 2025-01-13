@@ -4,7 +4,7 @@ import GoogleSearchBar from './Components/GoogleSearchBar';
 
 const getTimeOfDay = () => {
   const hours = new Date().getHours();
-  
+
   if (hours >= 5 && hours < 7) {
     return 'dawn'; // Dawn
   } else if (hours >= 7 && hours < 12) {
@@ -24,9 +24,9 @@ function App() {
   useEffect(() => {
     const interval = setInterval(() => {
       setTimeOfDay(getTimeOfDay());
-    }, 60000); 
+    }, 60000);
 
-    return () => clearInterval(interval); 
+    return () => clearInterval(interval);
   }, []);
 
   const getBackgroundClass = () => {
@@ -42,15 +42,15 @@ function App() {
       case 'night':
         return 'bg-gradient-to-r from-purple-800 via-indigo-900 to-gray-900';
       default:
-        return 'bg-white'; 
+        return 'bg-white';
     }
   };
 
   const getTextClass = () => {
     if (timeOfDay === 'night') {
-      return 'text-gray-100'; 
+      return 'text-gray-100';
     }
-    return 'text-gray-900'; 
+    return 'text-gray-900';
   };
 
   const getInputClass = () => {
@@ -64,7 +64,7 @@ function App() {
       case 'night':
         return 'bg-gray-800 text-white placeholder-gray-600';
       default:
-        return 'bg-white text-gray-800 placeholder-gray-400'; 
+        return 'bg-white text-gray-800 placeholder-gray-400';
     }
   };
 
@@ -79,7 +79,7 @@ function App() {
       case 'night':
         return 'bg-blue-500 text-white hover:bg-blue-600';
       default:
-        return 'bg-blue-500 text-white hover:bg-blue-600'; 
+        return 'bg-blue-500 text-white hover:bg-blue-600';
     }
   };
 
