@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 
-function Time() {
+function Time({ textClass }) {
   const [dateState, setDateState] = useState(new Date());
 
   useEffect(() => {
@@ -9,7 +10,7 @@ function Time() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center time   ">
+    <div className={ `${textClass} flex flex-col items-center justify-center time`} >
       <div className="time text-8xl font-bold ">
         {dateState.toLocaleString('en-US', {
           hour: 'numeric',

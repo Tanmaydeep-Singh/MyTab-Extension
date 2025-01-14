@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import Time from './Components/Time';
 import GoogleSearchBar from './Components/GoogleSearchBar';
+import TodoApp from './Components/To-Do';
 
 const getTimeOfDay = () => {
   const hours = new Date().getHours();
 
-  if (hours >= 5 && hours < 7) {
-    return 'dawn'; // Dawn
+  if (hours >= 0 && hours < 5) {
+    return 'midnight';
+  } else if (hours >= 5 && hours < 7) {
+    return 'dawn';
   } else if (hours >= 7 && hours < 12) {
-    return 'morning'; // Morning
+    return 'morning';
   } else if (hours >= 12 && hours < 17) {
-    return 'afternoon'; // Afternoon
+    return 'afternoon';
   } else if (hours >= 17 && hours < 19) {
-    return 'evening'; // Evening
-  } else {
-    return 'night'; // Night
+    return 'evening';
+  } else if (hours >= 19 && hours < 24) {
+    return 'night';
   }
 };
 
@@ -31,6 +34,8 @@ function App() {
 
   const getBackgroundClass = () => {
     switch (timeOfDay) {
+      case 'midnight':
+        return 'bg-gradient-to-r from-gray-900 via-black to-gray-800';
       case 'dawn':
         return 'bg-gradient-to-r from-purple-200 via-pink-200 to-blue-300';
       case 'morning':
@@ -47,7 +52,7 @@ function App() {
   };
 
   const getTextClass = () => {
-    if (timeOfDay === 'night') {
+    if (timeOfDay === 'night' || timeOfDay === 'midnight') {
       return 'text-gray-100';
     }
     return 'text-gray-900';
@@ -55,6 +60,10 @@ function App() {
 
   const getInputClass = () => {
     switch (timeOfDay) {
+      case 'midnight':
+        return 'bg-black text-gray-200 placeholder-gray-400';
+      case 'dawn':
+        return 'bg-purple-100 text-gray-800 placeholder-gray-500';
       case 'morning':
         return 'bg-white text-black placeholder-gray-400';
       case 'afternoon':
@@ -70,6 +79,10 @@ function App() {
 
   const getButtonClass = () => {
     switch (timeOfDay) {
+      case 'midnight':
+        return 'bg-gray-700 text-white hover:bg-gray-800';
+      case 'dawn':
+        return 'bg-purple-500 text-white hover:bg-purple-600';
       case 'morning':
         return 'bg-green-500 text-white hover:bg-green-600';
       case 'afternoon':
@@ -86,13 +99,18 @@ function App() {
   return (
     <div className={`${getBackgroundClass()} min-h-screen transition-all duration-1500 ease-in-out`}>
       <div className="flex flex-col items-center justify-center min-h-[70vh]">
-        <Time />
+        <Time
+          textClass={getTextClass()}
+        />
         <GoogleSearchBar
           textClass={getTextClass()}
           inputClass={getInputClass()}
           buttonClass={getButtonClass()}
         />
-      </div>
+
+        <TodoApp/>
+
+    </div>
     </div>
   );
 }
