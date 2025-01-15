@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const TodoApp = () => {
+const TodoApp = ({buttonClass}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [tasks, setTasks] = useState(() => {
     const savedTasks = localStorage.getItem('tasks');
@@ -66,7 +67,7 @@ const TodoApp = () => {
               />
               <button
                 onClick={addTask}
-                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300"
+                className={` ${buttonClass}  text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300`}
               >
         <img src='./icons/pen-solid.svg' alt="Add icon" className=' w-5 h-5 object-cover' />
         </button>
