@@ -38,7 +38,7 @@ const TodoApp = ({buttonClass}) => {
       {/* Floating Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600 transition duration-300">
+        className={` ${buttonClass} fixed bottom-6 right-6  text-white p-4 rounded-full shadow-lg hover:bg-blue-600 transition duration-300  `} >
         <img src='./icons/pen-to-square-solid.svg' alt="Edit icon" className=' w-5 h-5 object-cover' />
       </button>
 
@@ -50,7 +50,7 @@ const TodoApp = ({buttonClass}) => {
             animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
             exit={{ opacity: 0, scale: 0.5, x: 150, y: 200 }}
             transition={{ duration: 0.4, type: 'spring', stiffness: 200 }}
-            className="fixed top-20 right-10 bg-white bg-opacity-20 backdrop-blur-md rounded-lg shadow-lg p-6 w-[30vw] h-[60vh] flex flex-col"
+            className="fixed top-20 right-10 bg-white bg-opacity-20 backdrop-blur-md rounded-lg shadow-lg p-6 w-[24vw] h-[60vh] flex flex-col"
             style={{
               boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
               border: '1px solid rgba(255, 255, 255, 0.18)',

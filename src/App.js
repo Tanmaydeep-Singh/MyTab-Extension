@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Time from './Components/Time';
 import GoogleSearchBar from './Components/GoogleSearchBar';
 import TodoApp from './Components/To-Do';
+import Navbar from './Components/Navbar';
+import Sidebar from './Components/Sidebar';
 
 const getTimeOfDay = () => {
   const hours = new Date().getHours();
@@ -114,6 +116,9 @@ function App() {
 
   return (
     <div className={`${getBackgroundClass()} min-h-screen transition-all duration-1500 ease-in-out`}>
+        <Sidebar/>
+
+    <Navbar/>
       <div className="flex flex-col items-center justify-center min-h-[70vh]">
         <Time
           textClass={getTextClass()}

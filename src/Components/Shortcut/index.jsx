@@ -62,7 +62,6 @@ const ShortcutSection = () => {
         </div>
       ))}
 
-      {/* Add Shortcut Button */}
       <div
         className="flex flex-col items-center justify-center text-center w-20 cursor-pointer"
         onClick={() => setShowAddShortcut(true)}
@@ -73,7 +72,6 @@ const ShortcutSection = () => {
         <p className="mt-2 text-sm text-gray-700 font-medium">Add shortcut</p>
       </div>
 
-      {/* Add Shortcut Modal */}
       {showAddShortcut && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded shadow-lg w-80">
