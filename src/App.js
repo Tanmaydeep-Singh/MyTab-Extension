@@ -116,7 +116,8 @@ function App() {
 
   return (
     <div className={`${getBackgroundClass()} min-h-screen transition-all duration-1500 ease-in-out`}>
-        <Sidebar/>
+        <Sidebar           textClass={getTextClass()}
+        />
 
     <Navbar/>
       <div className="flex flex-col items-center justify-center min-h-[70vh]">

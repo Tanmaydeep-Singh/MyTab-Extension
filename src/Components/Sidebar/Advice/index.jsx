@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react'
 
-function Advice() {
+function Advice({textClass}) {
     const [advice, setAdvice] = useState('');
 
     useEffect(() => {
@@ -19,7 +20,7 @@ function Advice() {
 
   return (
     <div>
-      <h1 className='mt-2 text-gray-500 '> &quot; {advice} &quot;</h1>
+      <h1 className={` ${textClass} mt-2`}> &quot; {advice} &quot;</h1>
     </div>
   );
 }
