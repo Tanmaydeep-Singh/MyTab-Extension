@@ -11,7 +11,6 @@ function Notepad() {
   }, []);
 
   useEffect(() => {
-    // Save blocks to localStorage whenever savedBlocks changes
     if (savedBlocks.length > 0) {
       localStorage.setItem('markdownBlocks', JSON.stringify(savedBlocks));
     }

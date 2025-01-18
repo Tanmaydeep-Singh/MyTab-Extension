@@ -18,7 +18,7 @@ function Time({ textClass }) {
           hour12: false,
         })}
       </div>
-      <div className="time text-lg text-gray-500 mt-2">
+      <div className="time text-lg  mt-2">
         {dateState.toLocaleDateString('en-GB', {
           day: 'numeric',
           month: 'short',

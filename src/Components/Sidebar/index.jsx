@@ -35,10 +35,10 @@ const Sidebar = ({ textClass }) => {
             animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : -20 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            <div className="border border-white/20 p-4 rounded-lg bg-opacity-50 bg-white/20">
-              <h3 className="font-bold text-gray-600">Notepad</h3>
+            <div className="border border-white/20 p-4 rounded-lg bg-opacity-50 ">
+              <h3 className="font-bold ">Notepad</h3>
               <textarea
-                className="w-full h-32 mt-2 p-2 bg-transparent border rounded-lg text-gray-700 border-gray-300 focus:outline-none focus:ring focus:ring-blue-300 placeholder-gray-400"
+                className="w-full h-32 mt-2 p-2 bg-transparent border rounded-lg  border-gray-300 focus:outline-none focus:ring focus:ring-blue-300 placeholder-gray-400"
                 placeholder="Write a poem or quote here..."
               />
             </div>
