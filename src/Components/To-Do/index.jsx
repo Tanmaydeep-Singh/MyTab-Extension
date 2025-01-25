@@ -35,14 +35,12 @@ const TodoApp = ({buttonClass}) => {
 
   return (
     <div>
-      {/* Floating Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={` ${buttonClass} fixed bottom-6 right-6  text-white p-4 rounded-full shadow-lg hover:bg-blue-600 transition duration-300  `} >
         <img src='./icons/pen-to-square-solid.svg' alt="Edit icon" className=' w-5 h-5 object-cover' />
       </button>
 
-      {/* AnimatePresence for animation */}
       <AnimatePresence>
         {isOpen && (
           <motion.div

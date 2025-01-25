@@ -11,8 +11,7 @@ function Note() {
     const handleDownloadPdf = () => {
         const doc = new jsPDF();
 
-        doc.setFont("times");
-        doc.setFontSize(12);
+        doc.setFontSize(10);
         doc.text(text, 10, 10);
 
         const currentDate = new Date();
@@ -42,7 +41,7 @@ function Note() {
                 <h3 className="font-semibold text-xl text-gray-800">Notepad</h3>
                 <textarea
                     className="w-full h-32 mt-4 p-3 bg-transparent border rounded-lg border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-400 text-gray-900"
-                    placeholder="Write a poem or quote here...                    Press Ctrl + ` to download a PDF of this note."
+                    placeholder="Write a poem or quote here..."
                     value={text}
                     onChange={handleTextChange}
                 />

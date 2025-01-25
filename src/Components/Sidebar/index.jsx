@@ -16,14 +16,13 @@ const Sidebar = ({ textClass }) => {
         className={`fixed top-0 left-0 h-screen ${isOpen ? "w-[30vw]" : "w-0"} overflow-hidden bg-opacity-40 bg-white backdrop-blur-lg border-r border-white/20 shadow-lg`}
         initial={{ width: "0vw" }}
         animate={{ width: isOpen ? "30vw" : "0vw" }}
-        transition={{ duration: 0.6, ease: "easeInOut" }} // Smoother transition
+        transition={{ duration: 0.6, ease: "easeInOut" }} 
       >
-        {/* Close Button */}
 
         <div className="flex justify-between items-center p-4">
           <h2 className="text-lg font-bold text-gray-700"></h2>
           <button
-            className="text-xl font-bold text-gray-700 hover:text-red-500"
+            className="text-xl font-bold text-gray-700 hover:text-red-500 "
             onClick={() => setIsOpen(false)}
           >
             ✖

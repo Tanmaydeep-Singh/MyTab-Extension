@@ -4,6 +4,7 @@ import GoogleSearchBar from './Components/GoogleSearchBar';
 import TodoApp from './Components/To-Do';
 import Navbar from './Components/Navbar';
 import Sidebar from './Components/Sidebar';
+import APOD from './Components/APOD';
 
 const getTimeOfDay = () => {
   const hours = new Date().getHours();
@@ -114,26 +115,72 @@ function App() {
     }
   };
 
+  const [, setTypedCode] = useState('');
+  const [isCodeCorrect, setIsCodeCorrect] = useState(false);
+
+  const secretCode = 'APOD';
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      const key = event.key.toUpperCase();
+      if (/^[A-Z]$/.test(key)) {
+        setTypedCode((prevCode) => {
+          const newCode = prevCode + key;
+          if (newCode === secretCode) {
+            setIsCodeCorrect(true);
+            return '';
+          } else if (newCode.length > secretCode.length) {
+            return key;
+          }
+
+          return newCode;
+        });
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+
+  }, []);
   return (
     <div className={`${getBackgroundClass()} min-h-screen transition-all duration-1500 ease-in-out`}>
-        <Sidebar           textClass={getTextClass()}
-        />
+      <Sidebar textClass={getTextClass()}
+      />
 
-    <Navbar/>
-      <div className="flex flex-col items-center justify-center min-h-[70vh]">
-        <Time
-          textClass={getTextClass()}
-        />
-        <GoogleSearchBar
-          textClass={getTextClass()}
-          inputClass={getInputClass()}
-          buttonClass={getButtonClass()}
-        />
-        <TodoApp 
-                  buttonClass={getButtonClass()}
-                  />
-      </div>
+      <Navbar />
+      {isCodeCorrect ? 
+      <div> 
+      <button
+            className="text-xl font-bold right-2 hover:text-red-500 fixed top-6 right-8 z-50 text-white" 
+            onClick={() => setIsCodeCorrect(false)}
+          >
+            ✖
+          </button>
+      <APOD />
+      </div> :
+
+        <div className="flex flex-col items-center justify-center min-h-[70vh]">
+          <Time
+            textClass={getTextClass()}
+          />
+
+
+
+          <GoogleSearchBar
+            textClass={getTextClass()}
+            inputClass={getInputClass()}
+            buttonClass={getButtonClass()}
+          />
+          <TodoApp
+            buttonClass={getButtonClass()}
+          />
+        </div>
+      }
     </div>
+
   );
 }
 
