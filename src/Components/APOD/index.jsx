@@ -23,6 +23,7 @@ const APOD = () => {
           data: result.explanation,
           date: today,
         };
+        console.log(today);
 
         // Save to localStorage
         localStorage.setItem("APOD", JSON.stringify(cachedData));
