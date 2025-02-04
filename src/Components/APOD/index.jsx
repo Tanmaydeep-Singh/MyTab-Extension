@@ -39,11 +39,11 @@ const APOD = () => {
     const loadAPOD = () => {
       const cachedAPOD = localStorage.getItem("APOD");
       const today = new Date().toISOString().split("T")[0];
+      console.log(today);
 
       if (cachedAPOD) {
         const { image, data, date } = JSON.parse(cachedAPOD);
 
-        // Check if cached data is for today
         if (date === today) {
           setImage(image);
           setData(data);
@@ -51,13 +51,11 @@ const APOD = () => {
         }
       }
 
-      // Fetch new data if cache is invalid or absent
       fetchAPOD();
     };
 
     loadAPOD();
 
-    // Set a timer to fetch the next day's APOD at midnight
     const now = new Date();
     const millisUntilMidnight =
       new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1).getTime() - now.getTime();
@@ -66,7 +64,6 @@ const APOD = () => {
       fetchAPOD();
     }, millisUntilMidnight);
 
-    // Cleanup timeout on component unmount
     return () => clearTimeout(midnightTimer);
   }, []);
 

@@ -5,33 +5,31 @@ import TodoApp from './Components/To-Do';
 import Navbar from './Components/Navbar';
 import Sidebar from './Components/Sidebar';
 import APOD from './Components/APOD';
+import Menu from './Components/Menu';
 
 const getTimeOfDay = () => {
   const hours = new Date().getHours();
-
-  if (hours >= 0 && hours < 3) {
-    return 'late-night';
-  } else if (hours >= 3 && hours < 6) {
-    return 'early-morning';
-  } else if (hours >= 6 && hours < 9) {
-    return 'sunrise';
-  } else if (hours >= 9 && hours < 12) {
-    return 'morning';
-  } else if (hours >= 12 && hours < 15) {
-    return 'midday';
-  } else if (hours >= 15 && hours < 18) {
-    return 'afternoon';
-  } else if (hours >= 18 && hours < 21) {
-    return 'evening';
-  } else if (hours >= 21 && hours < 24) {
-    return 'night';
-  }
+  if (hours >= 0 && hours < 3) return 'late-night';
+  if (hours >= 3 && hours < 6) return 'early-morning';
+  if (hours >= 6 && hours < 9) return 'sunrise';
+  if (hours >= 9 && hours < 12) return 'morning';
+  if (hours >= 12 && hours < 15) return 'midday';
+  if (hours >= 15 && hours < 18) return 'afternoon';
+  if (hours >= 18 && hours < 21) return 'evening';
+  return 'night';
 };
 
 function App() {
   const [timeOfDay, setTimeOfDay] = useState(getTimeOfDay());
+  const [selectedTheme, setSelectedTheme] = useState('default');
+  const [menuOpen, setMenuOpen] = useState(false);  // State to track menu visibility
 
   useEffect(() => {
+    const storedTheme = localStorage.getItem('selectedTheme');
+    if (storedTheme) {
+      setSelectedTheme(storedTheme);
+    }
+
     const interval = setInterval(() => {
       setTimeOfDay(getTimeOfDay());
     }, 60000);
@@ -39,8 +37,49 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'M' || event.key === 'm') {
+      setMenuOpen((prev) => !prev);  // Toggle menu on 'M' key press
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   const getBackgroundClass = () => {
+    if (selectedTheme !== 'default') {
+      return themeGradient(selectedTheme);
+    }
+
     switch (timeOfDay) {
+      case 'late-night':
+        return 'bg-gradient-to-r from-gray-900 via-black to-gray-700';
+      case 'early-morning':
+        return 'bg-gradient-to-r from-gray-800 via-purple-900 to-blue-900';
+      case 'sunrise':
+        return 'bg-gradient-to-r from-orange-300 via-pink-400 to-yellow-500';
+      case 'morning':
+        return 'bg-gradient-to-r from-blue-300 via-sky-400 to-indigo-500';
+      case 'midday':
+        return 'bg-gradient-to-r from-yellow-300 via-orange-400 to-red-500';
+      case 'afternoon':
+        return 'bg-gradient-to-r from-orange-400 via-red-500 to-pink-500';
+      case 'evening':
+        return 'bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-600';
+      case 'night':
+        return 'bg-gradient-to-r from-purple-800 via-indigo-900 to-gray-900';
+      default:
+        return 'bg-white';
+    }
+  };
+
+  const themeGradient = (theme) => {
+    switch (theme) {
       case 'late-night':
         return 'bg-gradient-to-r from-gray-900 via-black to-gray-700';
       case 'early-morning':
@@ -132,7 +171,6 @@ function App() {
           } else if (newCode.length > secretCode.length) {
             return key;
           }
-
           return newCode;
         });
       }
@@ -143,44 +181,45 @@ function App() {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-
   }, []);
+
   return (
     <div className={`${getBackgroundClass()} min-h-screen transition-all duration-1500 ease-in-out`}>
-      <Sidebar textClass={getTextClass()}
-      />
-
+      <Sidebar textClass={getTextClass()} />
       <Navbar />
-      {isCodeCorrect ? 
-      <div> 
-      <button
-            className="text-xl font-bold right-2 hover:text-red-500 fixed top-6 right-8 z-50 text-white" 
+      {menuOpen && (
+        <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 z-50">
+          <button
+            className="text-white text-xl absolute top-16 right-32 z-50"
+            onClick={() => setMenuOpen(false)} 
+          >
+            ✖
+          </button>
+          <Menu setTheme={setSelectedTheme} />
+        </div>
+      )}
+      {isCodeCorrect ? (
+        <div>
+          <button
+            className="text-xl font-bold right-2 hover:text-red-500 fixed top-6 right-8 z-50 text-white"
             onClick={() => setIsCodeCorrect(false)}
           >
             ✖
           </button>
-      <APOD />
-      </div> :
-
+          <APOD />
+        </div>
+      ) : (
         <div className="flex flex-col items-center justify-center min-h-[70vh]">
-          <Time
-            textClass={getTextClass()}
-          />
-
-
-
+          <Time textClass={getTextClass()} />
           <GoogleSearchBar
             textClass={getTextClass()}
             inputClass={getInputClass()}
             buttonClass={getButtonClass()}
           />
-          <TodoApp
-            buttonClass={getButtonClass()}
-          />
+          <TodoApp buttonClass={getButtonClass()} />
         </div>
-      }
+      )}
     </div>
-
   );
 }
 
