@@ -1,63 +1,101 @@
-# myTab
+# Custom Chrome Extension - React & Tailwind
 
-**myTab** is a custom Chrome tab extension that enhances your browsing experience by offering personalized features and functionality. With myTab, you can transform your new tab page into a more productive and visually appealing workspace.
+This is a custom Chrome extension built with React and Tailwind CSS, designed to provide a personalized homepage experience. The extension includes multiple features like a time-based theme, to-do list, notes, Astronomy Picture of the Day (APOD), fun facts, and an interactive menu for quick access to different functionalities.
 
 ## Features
 
-- **Time-Based Background**: Automatically changes the background based on the time of day for a refreshing experience.
-- **Cookie (Fun Advice)**: Get a dose of fun advice or quirky tips every time you open a new tab.
-- **To-Do List**: Stay organized with an integrated to-do list to manage your daily tasks.
-- **Search**: Seamlessly search the web using your preferred search engine directly from the tab.
-- **Notepad**: Jot down quick notes without leaving your tab.
-- **Streak Tracker**: Keep track of your daily habits or goals with the streak tracker.
-
+- **Time-Based Theme**: The theme of the homepage changes dynamically based on the time of day (e.g., dark mode at night, light mode during the day).
+- **To-Do List**: Keep track of your tasks with an interactive to-do list that allows you to add, edit, and remove tasks.
+- **Notes**: Quickly jot down notes on the homepage to keep track of thoughts or reminders.
+- **Astronomy Picture of the Day (APOD)**: View NASA's Astronomy Picture of the Day directly on your homepage.
+- **Fun Facts**: Get random fun facts displayed on your homepage for a bit of trivia.
+- **Menu (Press `M`)**: Press `M` to open a hidden menu for quick access to various settings and features.
+  
 ## Installation
 
+To use the extension, follow these steps:
+
 1. Clone this repository to your local machine:
-   ```bash
-   git clone https://github.com/your-username/myTab.git
-   ```
-2. Open Google Chrome and navigate to `chrome://extensions/`.
-3. Enable **Developer mode** using the toggle switch at the top right corner.
-4. Click on **Load unpacked** and select the cloned `myTab` directory.
-5. Your custom Chrome tab extension is now installed and ready to use!
+    ```bash
+    git clone https://github.com/your-username/your-extension-repo.git
+    ```
+  
+2. Navigate to the `chrome://extensions/` page in your Chrome browser.
+
+3. Enable **Developer mode** in the top right corner.
+
+4. Click on the **Load unpacked** button.
+
+5. Select the directory where you've cloned the repository.
+
+6. The extension will be installed, and your custom homepage will be live when you open a new tab.
 
 ## Usage
 
-1. Open a new tab in Chrome to view the myTab interface.
-2. Use the settings icon on the tab to configure widgets, themes, and other options.
-3. Add or remove widgets to customize your tab layout.
-4. Enjoy a personalized browsing experience tailored to your preferences.
+- When you open a new tab in Chrome, the extension's homepage will be displayed.
+- **Time-based Theme**: The theme will automatically adjust based on the current time of day.
+- **To-Do List**: Add, edit, or remove tasks by interacting with the to-do list section.
+- **Notes**: Write down notes directly on the homepage by interacting with the notes section.
+- **APOD**: The Astronomy Picture of the Day will be displayed with a short description.
+- **Fun Facts**: Random fun facts will appear in a dedicated section.
+- **Menu**: Press `M` on your keyboard to open or close the interactive menu that gives you quick access to the extension's features.
+
+## Development
+
+If you'd like to contribute or make changes to the extension, you can start by cloning the repository and installing the necessary dependencies.
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (LTS version recommended)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/) (for managing dependencies)
+
+### Setup
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/your-extension-repo.git
+    cd your-extension-repo
+    ```
+
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+    or
+    ```bash
+    yarn install
+    ```
+
+3. Run the development server:
+    ```bash
+    npm start
+    ```
+
+4. This will run the React app in development mode. The changes you make will automatically reflect when you load the extension.
+
+### Building for Production
+
+To create a production build of the extension:
+
+1. Run the build command:
+    ```bash
+    npm run build
+    ```
+
+2. After building, you can follow the steps in the **Installation** section to load the newly built extension into Chrome.
 
 ## Technologies Used
 
-- **React**: For building the user interface.
-- **Tailwind CSS**: For styling the application with ease and flexibility.
-- **Manifest V3**: For integrating with the Chrome Extensions API and ensuring compatibility.
-
-## Contributing
-
-We welcome contributions to improve myTab! To contribute:
-
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix:
-   ```bash
-   git checkout -b feature-name
-   ```
-3. Make your changes and commit them:
-   ```bash
-   git commit -m "Add feature or fix bug"
-   ```
-4. Push your changes to your fork:
-   ```bash
-   git push origin feature-name
-   ```
-5. Open a pull request on the main repository.
-
+- **React**: A JavaScript library for building user interfaces.
+- **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
+- **Chrome Extension API**: For creating the extension and interacting with Chrome's features.
+  
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Contact
+## Acknowledgements
 
-For any inquiries, feedback, or support, please contact us at [simarsing007@gmail.com].
+- [NASA API](https://api.nasa.gov/) for the Astronomy Picture of the Day (APOD).
+- [Fun Facts API](https://api.chucknorris.io/) for random fun facts.
+
