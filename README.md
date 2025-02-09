@@ -1,6 +1,7 @@
 # Custom Chrome Extension - React & Tailwind
 
 This is a custom Chrome extension built with React and Tailwind CSS, designed to provide a personalized homepage experience. The extension includes multiple features like a time-based theme, to-do list, notes, Astronomy Picture of the Day (APOD), fun facts, and an interactive menu for quick access to different functionalities.
+![image](https://github.com/user-attachments/assets/4c1e613a-32f4-43d2-a7ae-f9af29929eb1)
 
 ## Features
 
@@ -99,3 +100,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [NASA API](https://api.nasa.gov/) for the Astronomy Picture of the Day (APOD).
 - [Fun Facts API](https://api.chucknorris.io/) for random fun facts.
 
+## Snippets
+![image](https://github.com/user-attachments/assets/affce78d-2962-4ea7-9d63-b365982dcaa4)
+
+![image](https://github.com/user-attachments/assets/5ccf1921-09c7-414c-9817-960ac554beac)
+
+![image](https://github.com/user-attachments/assets/48e94f41-0284-4a1e-91d3-eec7ddd3ee32)
+![image](https://github.com/user-attachments/assets/17214365-3950-4e02-b882-2f24a57f9907)
